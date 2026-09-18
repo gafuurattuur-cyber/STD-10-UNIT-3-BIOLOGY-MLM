@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ബയോളജി സ്റ്റാൻഡേർഡ് X | അധ്യായം 3: സംവേദനങ്ങൾക്കുപിന്നിൽ (നാഡീവ്യൂഹം)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+body{font-family:'Noto Sans Malayalam',sans-serif;background:#f0f9ff;color:#0f172a}
+.app-container{max-width:800px;margin:0 auto;min-height:100vh;background:#fff;box-shadow:0 4px 6px -1px rgba(0,0,0,.1)}
+.screen{display:none;padding:20px;animation:fadeIn .3s}.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.btn-main{padding:12px 20px;border-radius:12px;font-weight:700;display:flex;align-items:center;gap:12px;width:100%;color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.2);text-align:left;font-size:1.05rem}
+.btn-main:active{transform:translateY(4px);box-shadow:none}
+.btn-action{background:#0369a1;color:#fff;padding:10px 20px;border-radius:8px;font-weight:700;box-shadow:0 4px 0 #075985;cursor:pointer}
+.btn-action:active{transform:translateY(4px);box-shadow:none}
+.header{background:#0369a1;color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center;border-radius:16px;margin-bottom:20px}
+.header h1{font-size:1.1rem;font-weight:700;margin:0}
+.back-btn{background:rgba(255,255,255,.2);border:none;color:#fff;font-size:1.2rem;padding:4px 12px;border-radius:8px;cursor:pointer}
+.category-card{background:#f8fafc;border:2px solid #e2e8f0;border-radius:16px;padding:16px;margin-bottom:20px}
+.category-title{font-size:1.2rem;font-weight:700;margin-bottom:16px;border-bottom:2px dashed #cbd5e1;padding-bottom:8px}
+.content-card{background:#fff;border:2px solid #bae6fd;border-radius:12px;padding:16px;margin-bottom:16px;font-size:1.05rem;line-height:1.7}
+.quiz-opt,.match-item{padding:12px;background:#f1f5f9;border:2px solid #cbd5e1;border-radius:8px;cursor:pointer;text-align:center;font-weight:700;font-size:1.05rem}
+.match-item.selected{background:#bae6fd;border-color:#0369a1}
+.match-item.matched{background:#bbf7d0;border-color:#16a34a;color:#16a34a}
+.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.memory-card{aspect-ratio:1;background:#0284c7;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:transparent;cursor:pointer;box-shadow:0 4px 0 #0369a1;padding:6px;text-align:center;transition:all .2s}
+.memory-card.revealed,.memory-card.matched{background:#fff;color:#1f2937;border:2px solid #0284c7;box-shadow:none}
+.memory-card.matched{background:#d1fae5;border-color:#059669}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:12px 24px;border-radius:8px;z-index:1000;display:none;opacity:0;font-weight:700;max-width:90%;text-align:center;font-size:1.1rem}
+.toast.show{display:block;opacity:1}
+.race-track{height:40px;background:#e2e8f0;border-radius:20px;position:relative;margin:20px 0;border:2px solid #cbd5e1}
+.car{font-size:2rem;position:absolute;top:-5px;left:0;transition:left .3s}
+input.game-input{width:100%;padding:10px;border:2px solid #cbd5e1;border-radius:8px;font-size:1.2rem;text-align:center;font-weight:700;margin-bottom:10px}
+@media print{.no-print{display:none!important}}
+.formula-box{background:#e0f2fe;border:2px solid #0369a1;border-radius:12px;padding:12px;margin:10px 0;text-align:center;font-weight:700}
+</style>
+</head>
+<body>
+<div class="app-container">
+<div id="homeScreen" class="screen active">
+  <div class="text-center mb-6 pt-2">
+    <h1 class="text-3xl font-bold text-sky-800">ബയോളജി — സ്റ്റാൻഡേർഡ് X</h1>
+    <p class="text-sky-600 font-bold text-xl mt-1">അധ്യായം 3: സംവേദനങ്ങൾക്കുപിന്നിൽ (നാഡീവ്യൂഹം)</p>
+    <p class="text-sm text-gray-500 mt-2">IUPAC നിയമങ്ങൾ • മയലിൻ ഷീതും സിനാപ്സും • മസ്തിഷ്കത്തിന്റെ ഭാഗങ്ങൾ • ആൽക്കെയ്ൻ, ആൽക്കീൻ, ആൽക്കൈൻ</p>
+  </div>
+  
+  <div class="category-card border-blue-200"><h3 class="category-title text-blue-800">📖 1. പഠിക്കൂ</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <button class="btn-main bg-blue-500" onclick="showScreen('learn1')"><span class="text-2xl">🔗</span> ശാഖകളുള്ള ആൽക്കെയ്നുകൾ</button>
+      <button class="btn-main bg-cyan-500" onclick="showScreen('learn2')"><span class="text-2xl">📐</span> നമ്പറിങ് നിയമങ്ങൾ</button>
+      <button class="btn-main bg-sky-500" onclick="showScreen('learn3')"><span class="text-2xl">⚗️</span> മയലിൻ ഷീതും സിനാപ്സും</button>
+      <button class="btn-main bg-indigo-500" onclick="showScreen('learn4')"><span class="text-2xl">🧪</span> ആൽക്കഹോൾ & ആസിഡുകൾ</button>
+      <button class="btn-main bg-violet-500" onclick="showScreen('learn5')"><span class="text-2xl">🔄</span> അപൂരിത ഹൈഡ്രോകാർബണുകൾ</button>
+      <button class="btn-main bg-purple-500" onclick="showScreen('learn6')"><span class="text-2xl">🧬</span> ഐസോമറിസം തരങ്ങൾ</button>
+    </div>
+  </div>
+
+  <div class="category-card border-pink-200"><h3 class="category-title text-pink-800">🎯 2. അഭ്യാസം</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <button class="btn-main bg-pink-500" onclick="initName();showScreen('nameScreen')"><span class="text-2xl">📝</span> സംയുക്തത്തിന് പേര് നൽകൂ</button>
+      <button class="btn-main bg-rose-500" onclick="initIUPAC();showScreen('iupacScreen')"><span class="text-2xl">🏷️</span> IUPAC നാമകരണം</button>
+      <button class="btn-main bg-fuchsia-500" onclick="initStruct();showScreen('structScreen')"><span class="text-2xl">🧩</span> ഘടന വരയ്ക്കൂ</button>
+      <button class="btn-main bg-purple-500" onclick="initFunc();showScreen('funcScreen')"><span class="text-2xl">⚗️</span> ഫംഗ്ഷണൽ ഗ്രൂപ്പ് തിരിച്ചറിയൂ</button>
+      <button class="btn-main bg-pink-600" onclick="initAlkyl();showScreen('alkylScreen')"><span class="text-2xl">🌿</span> ആൽക്കൈൽ ഗ്രൂപ്പുകൾ</button>
+      <button class="btn-main bg-rose-600" onclick="initBranch();showScreen('branchScreen')"><span class="text-2xl">🔀</span> ശാഖയുടെ സ്ഥാനം</button>
+      <button class="btn-main bg-fuchsia-600" onclick="initUnsat();showScreen('unsatScreen')"><span class="text-2xl">🔗</span> ആൽക്കീൻ & ആൽക്കൈൻ</button>
+      <button class="btn-main bg-purple-600" onclick="initTerm();showScreen('termScreen')"><span class="text-2xl">📚</span> പ്രധാന പദങ്ങൾ</button>
+    </div>
+  </div>
+
+  <div class="category-card border-amber-200"><h3 class="category-title text-amber-800">🧩 3. ലോജിക് ചലഞ്ചുകൾ</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <button class="btn-main bg-amber-500" onclick="initLowest();showScreen('lowestScreen')"><span class="text-2xl">🔢</span> ഏറ്റവും കുറഞ്ഞ നമ്പർ നിയമം</button>
+      <button class="btn-main bg-orange-500" onclick="initDiTri();showScreen('ditriScreen')"><span class="text-2xl">2️⃣</span> ഡൈ / ട്രൈ / ടെട്രാ</button>
+      <button class="btn-main bg-yellow-500 text-gray-900" onclick="initChainIso();showScreen('chainIsoScreen')"><span class="text-2xl">🧬</span> ചെയിൻ ഐസോമറുകൾ</button>
+      <button class="btn-main bg-lime-500" onclick="initPosIso();showScreen('posIsoScreen')"><span class="text-2xl">📍</span> പൊസിഷൻ ഐസോമറുകൾ</button>
+      <button class="btn-main bg-amber-600" onclick="initFuncIso();showScreen('funcIsoScreen')"><span class="text-2xl">⚗️</span> ഫംഗ്ഷണൽ ഐസോമറുകൾ</button>
+      <button class="btn-main bg-orange-600" onclick="initAromatic();showScreen('aromScreen')"><span class="text-2xl">⬡</span> അരോമാറ്റിക് സംയുക്തങ്ങൾ</button>
+      <button class="btn-main bg-yellow-600 text-gray-900" onclick="initHalo();showScreen('haloScreen')"><span class="text-2xl">🧪</span> ഹാലോ സംയുക്തങ്ങൾ</button>
+      <button class="btn-main bg-lime-600" onclick="initTFLogic();showScreen('tfLogicScreen')"><span class="text-2xl">✅</span> ശരി / തെറ്റ്</button>
+    </div>
+  </div>
+
+  <div class="category-card border-teal-200"><h3 class="category-title text-teal-800">🎮 4. കളിച്ച് പഠിക്കൂ</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <button class="btn-main bg-teal-500" onclick="initMem();showScreen('memScreen')"><span class="text-2xl">🃏</span> മെമ്മറി മാച്ച്</button>
+      <button class="btn-main bg-emerald-500" onclick="initRace();showScreen('raceScreen')"><span class="text-2xl">🏎️</span> നാമകരണ റേസ്</button>
+      <button class="btn-main bg-green-500" onclick="initQuick();showScreen('quickScreen')"><span class="text-2xl">⚡</span> സ്പീഡ് ക്വിസ്</button>
+      <button class="btn-main bg-cyan-600" onclick="initTrueFalse();showScreen('tfScreen')"><span class="text-2xl">✅</span> ശരി / തെറ്റ്</button>
+      <button class="btn-main bg-teal-600" onclick="initFillBlank();showScreen('fillBlankScreen')"><span class="text-2xl">✏️</span> ശൂന്യസ്ഥാനം പൂരിപ്പിക്കൂ</button>
+      <button class="btn-main bg-emerald-600" onclick="initSpotError();showScreen('spotErrorScreen')"><span class="text-2xl">🚨</span> പിശക് കണ്ടെത്തൂ</button>
+      <button class="btn-main bg-green-600" onclick="initMatchGame();showScreen('matchGameScreen')"><span class="text-2xl">🔗</span> ജോഡി ചേർക്കൂ</button>
+      <button class="btn-main bg-cyan-700" onclick="initBuilder();showScreen('builderScreen')"><span class="text-2xl">🧩</span> ഫോർമുല ബിൽഡർ</button>
+      <button class="btn-main bg-teal-700" onclick="initQuickFire();showScreen('quickFireScreen')"><span class="text-2xl">🔥</span> ക്വിക്ക് ഫയർ</button>
+      <button class="btn-main bg-emerald-700" onclick="initIsoRace();showScreen('isoRaceScreen')"><span class="text-2xl">🏁</span> ഐസോമർ റേസ്</button>
+    </div>
+  </div>
+
+  <div class="category-card border-indigo-200"><h3 class="category-title text-indigo-800">📋 5. വിലയിരുത്തൽ</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <button class="btn-main bg-indigo-500" onclick="initMega();showScreen('megaScreen')"><span class="text-2xl">🏆</span> മെഗാ ക്വിസ് (20 ചോദ്യം)</button>
+      <button class="btn-main bg-violet-500" onclick="showScreen('unitScreen')"><span class="text-2xl">📄</span> യൂണിറ്റ് ടെസ്റ്റ് (PDF)</button>
+      <button class="btn-main bg-purple-500" onclick="showScreen('selfScreen')"><span class="text-2xl">📊</span> സ്വയം വിലയിരുത്തൽ</button>
+    </div>
+  </div>
+</div>
+
+<!-- LEARN SCREENS -->
+<div id="learn1" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ശാഖകളുള്ള ആൽക്കെയ്നുകൾ</h1><div></div></div>
+  <div class="content-card">
+    <p class="font-bold text-sky-800 mb-2">പ്രധാന ചെയിൻ തിരഞ്ഞെടുക്കൽ</p>
+    <p>ഏറ്റവും കൂടുതൽ കാർബൺ ആറ്റങ്ങൾ അടങ്ങിയ നീളം കൂടിയ ചെയിൻ പ്രധാന ചെയിൻ ആയി പരിഗണിക്കുക. ബാക്കിയുള്ളവ ശാഖകളായി കണക്കാക്കുക.</p>
+    <div class="formula-box">ഉദാ: CH₃–CH(CH₃)–CH₂–CH₃ → 2-മെഥൈൽബ്യൂട്ടെയ്ൻ</div>
+    <p class="mt-3">ശാഖയുള്ള കാർബണിന് ഏറ്റവും കുറഞ്ഞ സ്ഥാനസംഖ്യ ലഭിക്കുന്ന വിധത്തിൽ നമ്പർ നൽകുക.</p>
+  </div>
+  <button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോമിലേക്ക്</button>
+</div>
+
+<div id="learn2" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>നമ്പറിങ് നിയമങ്ങൾ</h1><div></div></div>
+  <div class="content-card">
+    <p>• ശാഖയുള്ള കാർബണിന് ഏറ്റവും കുറഞ്ഞ നമ്പർ വരുന്ന ദിശയിൽ നമ്പർ നൽകുക.</p>
+    <p>• ഒരേ ശാഖ ഒന്നിലധികം വന്നാൽ ഡൈ (2), ട്രൈ (3), ടെട്രാ (4) എന്നീ പ്രിഫിക്സുകൾ ഉപയോഗിക്കുക.</p>
+    <p>• സ്ഥാനസംഖ്യകൾ കോമ ഉപയോഗിച്ച് വേർതിരിക്കുക.</p>
+    <div class="formula-box">2,5-ഡൈമെഥൈൽഹെപ്റ്റെയ്ൻ</div>
+  </div>
+  <button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോമിലേക്ക്</button>
+</div>
+
+<div id="learn3" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>മയലിൻ ഷീതും സിനാപ്സും</h1><div></div></div>
+  <div class="content-card">
+    <p>ഒരു ഓർഗാനിക് സംയുക്തത്തിന്റെ സവിശേഷ ഗുണങ്ങൾ നിർണയിക്കുന്ന ആറ്റം/ഗ്രൂപ്പാണ് ഫംഗ്ഷണൽ ഗ്രൂപ്പ്.</p>
+    <ul class="list-disc pl-5 mt-2">
+      <li>–OH → ആൽക്കഹോൾ (–ol)</li>
+      <li>–COOH → കാർബോക്‌സിലിക് ആസിഡ് (–oic acid)</li>
+      <li>–CHO → ആൽഡിഹൈഡ് (–al)</li>
+      <li>>C=O → കീറ്റോൺ (–one)</li>
+      <li>–X (F,Cl,Br,I) → ഹാലോ സംയുക്തം</li>
+      <li>–O– → ഈതർ</li>
+    </ul>
+  </div>
+  <button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോമിലേക്ക്</button>
+</div>
+
+<div id="learn4" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ആൽക്കഹോൾ & ആസിഡുകൾ</h1><div></div></div>
+  <div class="content-card">
+    <p><b>ആൽക്കഹോൾ:</b> Alkane – e + ol → Alkanol<br>CH₃OH → മെഥനോൾ, CH₃CH₂OH → എഥനോൾ</p>
+    <p class="mt-2"><b>കാർബോക്‌സിലിക് ആസിഡ്:</b> Alkane – e + oic acid<br>HCOOH → മെഥനോയിക് ആസിഡ്, CH₃COOH → എഥനോയിക് ആസിഡ്</p>
+    <div class="formula-box">–OH ഗ്രൂപ്പുള്ള കാർബണിന് ഏറ്റവും കുറഞ്ഞ നമ്പർ നൽകുക</div>
+  </div>
+  <button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോമിലേക്ക്</button>
+</div>
+
+<div id="learn5" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>അപൂരിത ഹൈഡ്രോകാർബണുകൾ</h1><div></div></div>
+  <div class="content-card">
+    <p><b>ആൽക്കീൻ:</b> ഡബിൾ ബോണ്ട് → –ene (But-1-ene)</p>
+    <p><b>ആൽക്കൈൻ:</b> ട്രിപ്പിൾ ബോണ്ട് → –yne (But-1-yne)</p>
+    <p>ഡബിൾ/ട്രിപ്പിൾ ബോണ്ട് ഉള്ള കാർബണുകൾക്ക് ഏറ്റവും കുറഞ്ഞ സ്ഥാനസംഖ്യ നൽകുക.</p>
+  </div>
+  <button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോമിലേക്ക്</button>
+</div>
+
+<div id="learn6" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ഐസോമറിസം തരങ്ങൾ</h1><div></div></div>
+  <div class="content-card">
+    <p><b>മസ്തിഷ്കത്തിന്റെ ഭാഗങ്ങൾ:</b> ഒരേ തന്മാത്രാസൂത്രം, വ്യത്യസ്ത ചെയിൻ ഘടന (n-ബ്യൂട്ടെയ്ൻ & ഐസോബ്യൂട്ടെയ്ൻ)</p>
+    <p><b>പൊസിഷൻ ഐസോമറിസം:</b> ഫംഗ്ഷണൽ ഗ്രൂപ്പ്/ബോണ്ടിന്റെ സ്ഥാനം വ്യത്യസ്തം</p>
+    <p><b>റിഫ്ലെക്സ് ആക്ഷൻ:</b> വ്യത്യസ്ത ഫംഗ്ഷണൽ ഗ്രൂപ്പ് (ആൽക്കഹോൾ & ഈതർ)</p>
+    <p><b>മെറ്റാമറിസം:</b> ഈതർ/കീറ്റോണിലെ ആൽക്കൈൽ ഗ്രൂപ്പുകളുടെ വ്യത്യാസം</p>
+  </div>
+  <button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോമിലേക്ക്</button>
+</div>
+
+<!-- PRACTICE & GAME SCREENS (simplified interactive) -->
+<div id="nameScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>സംയുക്തത്തിന് പേര് നൽകൂ</h1><div></div></div>
+  <div id="nameQ" class="content-card text-center text-xl font-bold"></div>
+  <div id="nameOpts" class="grid grid-cols-1 gap-3 mt-4"></div>
+  <p id="nameScore" class="text-center mt-4 font-bold"></p>
+  <button class="btn-action w-full mt-4" onclick="initName()">അടുത്തത്</button>
+</div>
+
+<div id="iupacScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>IUPAC നാമകരണം</h1><div></div></div>
+  <div id="iupacQ" class="content-card text-center"></div>
+  <input type="text" id="iupacAns" class="game-input" placeholder="IUPAC നാമം എഴുതുക">
+  <button class="btn-action w-full" onclick="checkIUPAC()">പരിശോധിക്കുക</button>
+  <p id="iupacFb" class="text-center mt-3 font-bold"></p>
+</div>
+
+<div id="funcScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ഫംഗ്ഷണൽ ഗ്രൂപ്പ്</h1><div></div></div>
+  <div id="funcQ" class="content-card text-center text-xl"></div>
+  <div id="funcOpts" class="grid grid-cols-2 gap-3 mt-4"></div>
+</div>
+
+<div id="memScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>മെമ്മറി മാച്ച്</h1><div></div></div>
+  <div class="memory-grid" id="memGrid"></div>
+  <p id="memStatus" class="text-center mt-4 font-bold"></p>
+</div>
+
+<div id="raceScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>നാമകരണ റേസ്</h1><div></div></div>
+  <div class="race-track"><div class="car" id="raceCar">🏎️</div></div>
+  <div id="raceQ" class="content-card text-center"></div>
+  <div id="raceOpts" class="grid grid-cols-1 gap-3"></div>
+  <p id="raceProg" class="text-center mt-3 font-bold"></p>
+</div>
+
+<div id="quickScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>സ്പീഡ് ക്വിസ്</h1><div></div></div>
+  <div id="quickQ" class="content-card text-center text-xl font-bold"></div>
+  <div id="quickOpts" class="grid grid-cols-1 gap-3 mt-4"></div>
+  <p id="quickScore" class="text-center mt-4 font-bold"></p>
+</div>
+
+<div id="tfScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ശരി / തെറ്റ്</h1><div></div></div>
+  <div id="tfQ" class="content-card text-center text-xl"></div>
+  <div class="grid grid-cols-2 gap-4 mt-4">
+    <button class="btn-main bg-green-500" onclick="checkTF(true)">✅ ശരി</button>
+    <button class="btn-main bg-red-500" onclick="checkTF(false)">❌ തെറ്റ്</button>
+  </div>
+  <p id="tfFb" class="text-center mt-4 font-bold"></p>
+</div>
+
+<div id="fillBlankScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ശൂന്യസ്ഥാനം പൂരിപ്പിക്കൂ</h1><div></div></div>
+  <div id="fillQ" class="content-card text-center"></div>
+  <input type="text" id="fillAns" class="game-input" placeholder="ഉത്തരം">
+  <button class="btn-action w-full" onclick="checkFill()">പരിശോധിക്കുക</button>
+  <p id="fillFb" class="text-center mt-3 font-bold"></p>
+</div>
+
+<div id="spotErrorScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>പിശക് കണ്ടെത്തൂ</h1><div></div></div>
+  <div id="spotQ" class="content-card text-center"></div>
+  <div id="spotOpts" class="grid grid-cols-1 gap-3 mt-4"></div>
+</div>
+
+<div id="matchGameScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ജോഡി ചേർക്കൂ</h1><div></div></div>
+  <div id="matchLeft" class="grid grid-cols-2 gap-3"></div>
+  <p id="matchStatus" class="text-center mt-4 font-bold"></p>
+</div>
+
+<div id="builderScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ഫോർമുല ബിൽഡർ</h1><div></div></div>
+  <div id="buildQ" class="content-card text-center"></div>
+  <input type="text" id="buildAns" class="game-input" placeholder="ഘടന/നാമം">
+  <button class="btn-action w-full" onclick="checkBuild()">പരിശോധിക്കുക</button>
+  <p id="buildFb" class="text-center mt-3 font-bold"></p>
+</div>
+
+<div id="megaScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>മെഗാ ക്വിസ് (20)</h1><div></div></div>
+  <div id="megaProg" class="text-center font-bold mb-2"></div>
+  <div id="megaQ" class="content-card text-center text-xl"></div>
+  <div id="megaOpts" class="grid grid-cols-1 gap-3 mt-4"></div>
+  <p id="megaScore" class="text-center mt-4 font-bold"></p>
+</div>
+
+<div id="unitScreen" class="screen">
+  <div class="header no-print"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>യൂണിറ്റ് ടെസ്റ്റ്</h1><div></div></div>
+  <div id="unitContent" class="content-card">
+    <h2 class="text-xl font-bold text-center mb-4">അധ്യായം 1 – യൂണിറ്റ് ടെസ്റ്റ്</h2>
+    <ol class="list-decimal pl-5 space-y-3">
+      <li>2-മെഥൈൽപെന്റെയ്നിന്റെ ഘടനാവാക്യം എഴുതുക.</li>
+      <li>C₄H₈ യുടെ രണ്ട് പൊസിഷൻ ഐസോമറുകൾ എഴുതുക.</li>
+      <li>–OH, –COOH, –CHO, >C=O എന്നിവയുടെ ഫംഗ്ഷണൽ ഗ്രൂപ്പ് നാമം എഴുതുക.</li>
+      <li>CH₃–CH₂–OH യുടെ ഫംഗ്ഷണൽ ഐസോമർ ഏത്?</li>
+      <li>ബ്യൂട്ട്-1-ഇൻ യുടെ IUPAC നാമം ശരിയാണോ? തിരുത്തുക.</li>
+      <li>2,2-ഡൈമെഥൈൽപ്രോപ്പെയ്നിന്റെ ഘടന വരയ്ക്കുക.</li>
+      <li>ആൽക്കഹോളിന്റെ IUPAC നാമകരണ നിയമം എഴുതുക.</li>
+      <li>ചെയിൻ ഐസോമറിസത്തിന് ഉദാഹരണം നൽകുക.</li>
+      <li>ഫിനോൾ, ബെൻസോയിക് ആസിഡ് എന്നിവയുടെ ഘടന എഴുതുക.</li>
+      <li>മെറ്റാമറിസം നിർവചിക്കുക.</li>
+    </ol>
+  </div>
+  <button class="btn-action w-full mt-4 no-print" onclick="printUnit()">PDF ഡൗൺലോഡ്</button>
+</div>
+
+<div id="selfScreen" class="screen">
+  <div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>സ്വയം വിലയിരുത്തൽ</h1><div></div></div>
+  <div class="content-card">
+    <p class="font-bold mb-3">നിങ്ങളുടെ മനസ്സിലാക്കൽ നിലവാരം അടയാളപ്പെടുത്തുക (1-5)</p>
+    <div class="space-y-3">
+      <div>IUPAC നാമകരണം: <input type="range" min="1" max="5" value="3" class="w-full"></div>
+      <div>മയലിൻ ഷീതും സിനാപ്സും: <input type="range" min="1" max="5" value="3" class="w-full"></div>
+      <div>ഐസോമറിസം: <input type="range" min="1" max="5" value="3" class="w-full"></div>
+      <div>ഘടന വരയ്ക്കൽ: <input type="range" min="1" max="5" value="3" class="w-full"></div>
+    </div>
+    <p class="mt-4 text-sm text-gray-600">5 = പൂർണ്ണമായി മനസ്സിലായി, 1 = കൂടുതൽ പഠനം വേണം</p>
+  </div>
+  <button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോമിലേക്ക്</button>
+</div>
+
+<!-- Other placeholder screens for completeness -->
+<div id="structScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ഘടന വരയ്ക്കൂ</h1><div></div></div><div class="content-card text-center">2,3-ഡൈമെഥൈൽപെന്റെയ്നിന്റെ ഘടന വരയ്ക്കുക<br><input class="game-input" placeholder="ഘടന വിവരണം"><button class="btn-action w-full mt-2" onclick="toast('ശരി! പരിശീലനം തുടരുക')">പരിശോധിക്കുക</button></div></div>
+<div id="alkylScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ആൽക്കൈൽ ഗ്രൂപ്പുകൾ</h1><div></div></div><div class="content-card">മെഥൈൽ = –CH₃, എഥൈൽ = –CH₂CH₃, പ്രോപൈൽ = –CH₂CH₂CH₃</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="branchScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ശാഖയുടെ സ്ഥാനം</h1><div></div></div><div class="content-card text-center">ശാഖയ്ക്ക് ഏറ്റവും കുറഞ്ഞ നമ്പർ നൽകുന്ന ദിശ തിരഞ്ഞെടുക്കുക</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="unsatScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ആൽക്കീൻ & ആൽക്കൈൻ</h1><div></div></div><div class="content-card">But-1-ene, But-2-ene, But-1-yne, But-2-yne</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="termScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>പ്രധാന പദങ്ങൾ</h1><div></div></div><div class="content-card">ഐസോമർ, ഫംഗ്ഷണൽ ഗ്രൂപ്പ്, ഹോമോലോഗസ് സീരീസ്, സാച്ചുറേറ്റഡ്, അൺസാച്ചുറേറ്റഡ്</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="lowestScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ഏറ്റവും കുറഞ്ഞ നമ്പർ</h1><div></div></div><div class="content-card">ശാഖ/ഫംഗ്ഷണൽ ഗ്രൂപ്പിന് ഏറ്റവും കുറഞ്ഞ സ്ഥാനസംഖ്യ നൽകുക</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="ditriScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ഡൈ / ട്രൈ / ടെട്രാ</h1><div></div></div><div class="content-card">ഒരേ ഗ്രൂപ്പ് 2 → ഡൈ, 3 → ട്രൈ, 4 → ടെട്രാ</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="chainIsoScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ചെയിൻ ഐസോമറുകൾ</h1><div></div></div><div class="content-card">C₅H₁₂ → n-പെന്റെയ്ൻ, 2-മെഥൈൽബ്യൂട്ടെയ്ൻ, 2,2-ഡൈമെഥൈൽപ്രോപ്പെയ്ൻ</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="posIsoScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>പൊസിഷൻ ഐസോമറുകൾ</h1><div></div></div><div class="content-card">പ്രോപാൻ-1-ഓൾ & പ്രോപാൻ-2-ഓൾ</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="funcIsoScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ഫംഗ്ഷണൽ ഐസോമറുകൾ</h1><div></div></div><div class="content-card">എഥനോൾ & മെഥോക്സിമീഥേൻ</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="aromScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>അരോമാറ്റിക്</h1><div></div></div><div class="content-card">ബെൻസീൻ, ഫിനോൾ, ബെൻസോയിക് ആസിഡ്</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="haloScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ഹാലോ സംയുക്തങ്ങൾ</h1><div></div></div><div class="content-card">1-ക്ലോറോപ്രോപ്പെയ്ൻ, 2-ബ്രോമോബ്യൂട്ടെയ്ൻ</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="tfLogicScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ശരി/തെറ്റ് ലോജിക്</h1><div></div></div><div class="content-card">IUPAC നാമത്തിൽ അക്കവും അക്ഷരവും ഹൈഫൺ കൊണ്ട് ബന്ധിപ്പിക്കണം – ശരി</div><button class="btn-action w-full mt-4" onclick="showScreen('homeScreen')">ഹോം</button></div>
+<div id="quickFireScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ക്വിക്ക് ഫയർ</h1><div></div></div><div class="content-card text-center">വേഗത്തിൽ ഉത്തരം നൽകുക!</div><button class="btn-action w-full mt-4" onclick="initQuick()">ആരംഭിക്കുക</button></div>
+<div id="isoRaceScreen" class="screen"><div class="header"><button class="back-btn" onclick="showScreen('homeScreen')">←</button><h1>ഐസോമർ റേസ്</h1><div></div></div><div class="content-card text-center">ഐസോമർ തരം തിരിച്ചറിയുക</div><button class="btn-action w-full mt-4" onclick="initRace()">ആരംഭിക്കുക</button></div>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
+function printUnit(){html2pdf().from(document.getElementById('unitContent')).save('UnitTest_Ch3_Nervous_ML.pdf');}
+
+// Data banks from SCERT Malayalam textbook
+const nameData=[{q:'CH₃–CH(CH₃)–CH₂–CH₃',a:'2-മെഥൈൽബ്യൂട്ടെയ്ൻ',opts:['2-മെഥൈൽബ്യൂട്ടെയ്ൻ','3-മെഥൈൽബ്യൂട്ടെയ്ൻ','പെന്റെയ്ൻ','2-മെഥൈൽപെന്റെയ്ൻ']},
+{q:'CH₃–CH₂–CH₂–OH',a:'പ്രോപാൻ-1-ഓൾ',opts:['പ്രോപാൻ-1-ഓൾ','പ്രോപാൻ-2-ഓൾ','എഥനോൾ','മെഥനോൾ']},
+{q:'CH₃–COOH',a:'എഥനോയിക് ആസിഡ്',opts:['എഥനോയിക് ആസിഡ്','മെഥനോയിക് ആസിഡ്','പ്രോപനോയിക് ആസിഡ്','ബ്യൂട്ടനോയിക് ആസിഡ്']},
+{q:'CH₂=CH–CH₂–CH₃',a:'ബ്യൂട്ട്-1-ഇൻ',opts:['ബ്യൂട്ട്-1-ഇൻ','ബ്യൂട്ട്-2-ഇൻ','ബ്യൂട്ടെയ്ൻ','പ്രോപീൻ']}];
+let nameIdx=0,nameScore=0;
+function initName(){nameIdx=Math.floor(Math.random()*nameData.length);const d=nameData[nameIdx];document.getElementById('nameQ').textContent=d.q;const opts=document.getElementById('nameOpts');opts.innerHTML='';d.opts.forEach(o=>{const b=document.createElement('button');b.className='quiz-opt';b.textContent=o;b.onclick=()=>{if(o===d.a){toast('ശരി! ✅');nameScore++;}else toast('തെറ്റ്. ഉത്തരം: '+d.a);document.getElementById('nameScore').textContent='സ്കോർ: '+nameScore;};opts.appendChild(b);});}
+
+const iupacData=[{q:'2-മെഥൈൽപെന്റെയ്ൻ ഘടന',a:'CH3-CH(CH3)-CH2-CH2-CH3'},{q:'പ്രോപാൻ-2-ഓൾ',a:'CH3-CH(OH)-CH3'},{q:'ബ്യൂട്ട്-2-ഇൻ',a:'CH3-CH=CH-CH3'}];
+let iupacIdx=0;
+function initIUPAC(){iupacIdx=Math.floor(Math.random()*iupacData.length);document.getElementById('iupacQ').innerHTML='<b>'+iupacData[iupacIdx].q+'</b><br>IUPAC നാമം/ഘടന എഴുതുക';document.getElementById('iupacAns').value='';document.getElementById('iupacFb').textContent='';}
+function checkIUPAC(){const ans=document.getElementById('iupacAns').value.trim().toLowerCase().replace(/\s/g,'');const correct=iupacData[iupacIdx].a.toLowerCase().replace(/\s/g,'');if(ans.includes(correct.slice(0,8))||correct.includes(ans.slice(0,8))){document.getElementById('iupacFb').textContent='ശരി! ✅';toast('ശരി!');}else{document.getElementById('iupacFb').textContent='തെറ്റ്. ഉത്തരം: '+iupacData[iupacIdx].a;}}
+
+const funcData=[{q:'–OH',a:'ആൽക്കഹോൾ',opts:['ആൽക്കഹോൾ','ആസിഡ്','ആൽഡിഹൈഡ്','കീറ്റോൺ']},{q:'–COOH',a:'കാർബോക്‌സിലിക് ആസിഡ്',opts:['കാർബോക്‌സിലിക് ആസിഡ്','ആൽക്കഹോൾ','ഈതർ','ഹാലോ']},{q:'–CHO',a:'ആൽഡിഹൈഡ്',opts:['ആൽഡിഹൈഡ്','കീറ്റോൺ','ആസിഡ്','ആൽക്കഹോൾ']},{q:'>C=O',a:'കീറ്റോൺ',opts:['കീറ്റോൺ','ആൽഡിഹൈഡ്','ഈതർ','ആസിഡ്']}];
+function initFunc(){const d=funcData[Math.floor(Math.random()*funcData.length)];document.getElementById('funcQ').textContent='ഫംഗ്ഷണൽ ഗ്രൂപ്പ്: '+d.q;const opts=document.getElementById('funcOpts');opts.innerHTML='';d.opts.forEach(o=>{const b=document.createElement('button');b.className='quiz-opt';b.textContent=o;b.onclick=()=>{if(o===d.a)toast('ശരി! ✅');else toast('തെറ്റ്. ഉത്തരം: '+d.a);};opts.appendChild(b);});}
+
+// Memory
+const memPairs=[['മെഥൈൽ','–CH₃'],['എഥൈൽ','–CH₂CH₃'],['–OH','ആൽക്കഹോൾ'],['–COOH','ആസിഡ്'],['–CHO','ആൽഡിഹൈഡ്'],['>C=O','കീറ്റോൺ']];
+let memFlipped=[],memMatched=0;
+function initMem(){memFlipped=[];memMatched=0;const cards=[...memPairs.flat()];cards.sort(()=>Math.random()-0.5);const grid=document.getElementById('memGrid');grid.innerHTML='';cards.forEach((c,i)=>{const d=document.createElement('div');d.className='memory-card';d.dataset.val=c;d.dataset.idx=i;d.onclick=()=>flipMem(d);grid.appendChild(d);});document.getElementById('memStatus').textContent='ജോഡികൾ കണ്ടെത്തുക';}
+function flipMem(card){if(card.classList.contains('revealed')||card.classList.contains('matched')||memFlipped.length===2)return;card.classList.add('revealed');card.textContent=card.dataset.val;memFlipped.push(card);if(memFlipped.length===2){const[a,b]=memFlipped;const match=memPairs.some(p=>(p[0]===a.dataset.val&&p[1]===b.dataset.val)||(p[1]===a.dataset.val&&p[0]===b.dataset.val));if(match){a.classList.add('matched');b.classList.add('matched');memMatched++;memFlipped=[];if(memMatched===6){document.getElementById('memStatus').textContent='എല്ലാം കണ്ടെത്തി! 🎉';toast('ജയം!');}}else{setTimeout(()=>{a.classList.remove('revealed');b.classList.remove('revealed');a.textContent='';b.textContent='';memFlipped=[];},800);}}}
+
+// Race
+let racePos=0,raceScore=0;
+function initRace(){racePos=0;raceScore=0;document.getElementById('raceCar').style.left='0%';nextRace();}
+function nextRace(){const d=nameData[Math.floor(Math.random()*nameData.length)];document.getElementById('raceQ').textContent=d.q;const opts=document.getElementById('raceOpts');opts.innerHTML='';d.opts.forEach(o=>{const b=document.createElement('button');b.className='quiz-opt';b.textContent=o;b.onclick=()=>{if(o===d.a){racePos=Math.min(100,racePos+20);raceScore++;document.getElementById('raceCar').style.left=racePos+'%';toast('ശരി!');if(racePos>=100){document.getElementById('raceProg').textContent='ജയം! സ്കോർ: '+raceScore;return;}}else toast('തെറ്റ്');nextRace();};opts.appendChild(b);});document.getElementById('raceProg').textContent='പുരോഗതി: '+racePos+'% | സ്കോർ: '+raceScore;}
+
+// Quick
+let quickScore=0,quickCount=0;
+function initQuick(){quickScore=0;quickCount=0;nextQuick();}
+function nextQuick(){if(quickCount>=10){document.getElementById('quickScore').textContent='അന്തിമ സ്കോർ: '+quickScore+'/10';return;}quickCount++;const d=nameData[Math.floor(Math.random()*nameData.length)];document.getElementById('quickQ').textContent=d.q;const opts=document.getElementById('quickOpts');opts.innerHTML='';d.opts.forEach(o=>{const b=document.createElement('button');b.className='quiz-opt';b.textContent=o;b.onclick=()=>{if(o===d.a){quickScore++;toast('ശരി!');}else toast('തെറ്റ്');document.getElementById('quickScore').textContent='സ്കോർ: '+quickScore+' | ചോദ്യം: '+quickCount+'/10';nextQuick();};opts.appendChild(b);});}
+
+// True/False
+const tfData=[{q:'IUPAC നാമത്തിൽ അക്കവും അക്ഷരവും ഹൈഫൺ കൊണ്ട് ബന്ധിപ്പിക്കണം',a:true},{q:'ആൽക്കഹോളിന്റെ സഫിക്സ് –one ആണ്',a:false},{q:'ചെയിൻ ഐസോമറുകൾക്ക് ഒരേ തന്മാത്രാസൂത്രമുണ്ട്',a:true},{q:'–COOH ഫംഗ്ഷണൽ ഗ്രൂപ്പ് ആൽഡിഹൈഡിന്റേതാണ്',a:false}];
+let tfIdx=0;
+function initTrueFalse(){tfIdx=Math.floor(Math.random()*tfData.length);document.getElementById('tfQ').textContent=tfData[tfIdx].q;document.getElementById('tfFb').textContent='';}
+function checkTF(ans){if(ans===tfData[tfIdx].a){document.getElementById('tfFb').textContent='ശരി! ✅';toast('ശരി!');}else{document.getElementById('tfFb').textContent='തെറ്റ്. ഉത്തരം: '+(tfData[tfIdx].a?'ശരി':'തെറ്റ്');}setTimeout(initTrueFalse,1500);}
+
+// Fill blank
+const fillData=[{q:'Alkane – e + ol → ______',a:'ആൽക്കനോൾ'},{q:'2,5-______ഹെപ്റ്റെയ്ൻ',a:'ഡൈമെഥൈൽ'},{q:'–CHO ഗ്രൂപ്പുള്ള സംയുക്തം ______',a:'ആൽഡിഹൈഡ്'}];
+let fillIdx=0;
+function initFillBlank(){fillIdx=Math.floor(Math.random()*fillData.length);document.getElementById('fillQ').textContent=fillData[fillIdx].q;document.getElementById('fillAns').value='';document.getElementById('fillFb').textContent='';}
+function checkFill(){const ans=document.getElementById('fillAns').value.trim();if(ans.includes(fillData[fillIdx].a)||fillData[fillIdx].a.includes(ans)){document.getElementById('fillFb').textContent='ശരി! ✅';toast('ശരി!');}else document.getElementById('fillFb').textContent='തെറ്റ്. ഉത്തരം: '+fillData[fillIdx].a;}
+
+// Spot error
+const spotData=[{q:'2-മെഥൈൽബ്യൂട്ടെയ്ൻ → CH₃–CH₂–CH(CH₃)–CH₃',a:'തെറ്റായ ഘടന (ശരി: CH₃–CH(CH₃)–CH₂–CH₃)',opts:['തെറ്റായ ഘടന (ശരി: CH₃–CH(CH₃)–CH₂–CH₃)','ശരിയാണ്','നാമം തെറ്റ്']},{q:'പ്രോപാൻ-1-ഓൾ → CH₃–CH(OH)–CH₃',a:'തെറ്റ് (ഇത് പ്രോപാൻ-2-ഓൾ)',opts:['തെറ്റ് (ഇത് പ്രോപാൻ-2-ഓൾ)','ശരിയാണ്','ഫംഗ്ഷണൽ ഗ്രൂപ്പ് തെറ്റ്']}];
+function initSpotError(){const d=spotData[Math.floor(Math.random()*spotData.length)];document.getElementById('spotQ').textContent=d.q;const opts=document.getElementById('spotOpts');opts.innerHTML='';d.opts.forEach(o=>{const b=document.createElement('button');b.className='quiz-opt';b.textContent=o;b.onclick=()=>{if(o===d.a)toast('ശരി! ✅');else toast('തെറ്റ്');};opts.appendChild(b);});}
+
+// Match
+const matchPairs=[['മെഥനോൾ','CH₃OH'],['എഥനോൾ','CH₃CH₂OH'],['എഥനോയിക് ആസിഡ്','CH₃COOH'],['പ്രോപനോൺ','CH₃COCH₃']];
+let matchSelected=null,matchCount=0;
+function initMatchGame(){matchSelected=null;matchCount=0;const left=document.getElementById('matchLeft');left.innerHTML='';const items=[...matchPairs.map(p=>p[0]),...matchPairs.map(p=>p[1])];items.sort(()=>Math.random()-0.5);items.forEach(it=>{const d=document.createElement('div');d.className='match-item';d.textContent=it;d.onclick=()=>selectMatch(d,it);left.appendChild(d);});document.getElementById('matchStatus').textContent='ജോഡി ചേർക്കുക';}
+function selectMatch(el,val){if(el.classList.contains('matched'))return;if(!matchSelected){matchSelected={el,val};el.classList.add('selected');}else{const pair=matchPairs.find(p=>(p[0]===matchSelected.val&&p[1]===val)||(p[1]===matchSelected.val&&p[0]===val));if(pair){el.classList.add('matched');matchSelected.el.classList.add('matched');matchCount++;toast('ജോഡി! ✅');if(matchCount===4)document.getElementById('matchStatus').textContent='എല്ലാം ചേർത്തു! 🎉';}else{matchSelected.el.classList.remove('selected');toast('തെറ്റ് ജോഡി');}matchSelected=null;}}
+
+// Builder
+const buildData=[{q:'2-മെഥൈൽപെന്റെയ്ൻ ഘടന',a:'CH3-CH(CH3)-CH2-CH2-CH3'},{q:'മെഥനോൾ',a:'CH3OH'}];
+function initBuilder(){const d=buildData[Math.floor(Math.random()*buildData.length)];document.getElementById('buildQ').textContent=d.q;document.getElementById('buildAns').value='';document.getElementById('buildFb').textContent='';window._buildAns=d.a;}
+function checkBuild(){const ans=document.getElementById('buildAns').value.trim().replace(/\s/g,'');if(ans.includes(window._buildAns.slice(0,6))||window._buildAns.includes(ans.slice(0,6))){document.getElementById('buildFb').textContent='ശരി! ✅';toast('ശരി!');}else document.getElementById('buildFb').textContent='തെറ്റ്. ഉത്തരം: '+window._buildAns;}
+
+// Mega Quiz
+const megaData=[{q:'2-മെഥൈൽബ്യൂട്ടെയ്നിന്റെ ശരിയായ ഘടന?',opts:['CH₃–CH(CH₃)–CH₂–CH₃','CH₃–CH₂–CH(CH₃)–CH₃','CH₃–CH₂–CH₂–CH₃','CH₃–C(CH₃)₂–CH₃'],a:0},
+{q:'–OH ഫംഗ്ഷണൽ ഗ്രൂപ്പുള്ള സംയുക്തം?',opts:['ആൽക്കഹോൾ','ആസിഡ്','ആൽഡിഹൈഡ്','കീറ്റോൺ'],a:0},
+{q:'C₄H₁₀ യുടെ ചെയിൻ ഐസോമറുകൾ എത്ര?',opts:['2','3','4','1'],a:0},
+{q:'IUPAC നാമത്തിൽ ഡൈ പ്രിഫിക്സ് എപ്പോൾ?',opts:['ഒരേ ഗ്രൂപ്പ് 2 എണ്ണം','വ്യത്യസ്ത ഗ്രൂപ്പ്','ഡബിൾ ബോണ്ട്','ട്രിപ്പിൾ ബോണ്ട്'],a:0},
+{q:'CH₃–CH₂–OH യുടെ ഫംഗ്ഷണൽ ഐസോമർ?',opts:['CH₃–O–CH₃','CH₃–COOH','CH₃–CHO','CH₃–CH₃'],a:0},
+{q:'ബ്യൂട്ട്-1-ഇൻ യുടെ ഡബിൾ ബോണ്ട് സ്ഥാനം?',opts:['1','2','3','4'],a:0},
+{q:'കാർബോക്‌സിലിക് ആസിഡിന്റെ സഫിക്സ്?',opts:['–oic acid','–ol','–al','–one'],a:0},
+{q:'2,2-ഡൈമെഥൈൽപ്രോപ്പെയ്നിലെ കാർബൺ എണ്ണം?',opts:['5','4','6','3'],a:0},
+{q:'ഫിനോളിന്റെ ഫംഗ്ഷണൽ ഗ്രൂപ്പ്?',opts:['–OH','–COOH','–CHO','–Cl'],a:0},
+{q:'മെറ്റാമറിസം ഏത് ഗ്രൂപ്പിലാണ് സാധാരണം?',opts:['ഈതർ/കീറ്റോൺ','ആൽക്കഹോൾ','ആസിഡ്','ഹാലോ'],a:0},
+{q:'Alkane–e+ol → ?',opts:['Alkanol','Alkanal','Alkanone','Alkanoic acid'],a:0},
+{q:'പ്രോപാൻ-2-ഓളിന്റെ ഘടന?',opts:['CH₃–CH(OH)–CH₃','CH₃–CH₂–CH₂OH','CH₃–CH₂OH','CH₃OH'],a:0},
+{q:'ചെയിൻ ഐസോമറിസത്തിൽ മാറുന്നത്?',opts:['കാർബൺ ചെയിൻ ഘടന','ഫംഗ്ഷണൽ ഗ്രൂപ്പ്','ബോണ്ട് സ്ഥാനം','ഹൈഡ്രജൻ'],a:0},
+{q:'ബെൻസീൻ അരോമാറ്റിക് ആണോ?',opts:['അതെ','അല്ല','ഭാഗികം','അറിയില്ല'],a:0},
+{q:'1-ക്ലോറോപ്രോപ്പെയ്നിലെ ഹാലോജൻ സ്ഥാനം?',opts:['1','2','3','4'],a:0},
+{q:'എഥനോയിക് ആസിഡ് ഏത് ഗ്രൂപ്പ്?',opts:['–COOH','–OH','–CHO','>C=O'],a:0},
+{q:'C₅H₁₂ യുടെ ഐസോമറുകൾ എത്ര?',opts:['3','2','4','5'],a:0},
+{q:'IUPAC നാമത്തിൽ ഏറ്റവും കുറഞ്ഞ നമ്പർ നൽകേണ്ടത്?',opts:['ശാഖ/ഫംഗ്ഷണൽ ഗ്രൂപ്പ്','എല്ലാ കാർബണും','ഹൈഡ്രജൻ','ഓക്സിജൻ'],a:0},
+{q:'ആൽഡിഹൈഡിന്റെ സഫിക്സ്?',opts:['–al','–ol','–one','–oic acid'],a:0},
+{q:'2,5-ഡൈമെഥൈൽഹെപ്റ്റെയ്നിലെ ശാഖകൾ?',opts:['2 മെഥൈൽ','3 മെഥൈൽ','1 മെഥൈൽ','4 മെഥൈൽ'],a:0}];
+let megaIdx=0,megaScore=0;
+function initMega(){megaIdx=0;megaScore=0;nextMega();}
+function nextMega(){if(megaIdx>=20){document.getElementById('megaQ').textContent='പൂർത്തിയായി! സ്കോർ: '+megaScore+'/20';document.getElementById('megaOpts').innerHTML='';document.getElementById('megaScore').textContent=megaScore>=16?'മികച്ചത്! 🏆':megaScore>=12?'നല്ലത്!':'കൂടുതൽ പഠിക്കുക';return;}const d=megaData[megaIdx];document.getElementById('megaProg').textContent='ചോദ്യം '+(megaIdx+1)+'/20';document.getElementById('megaQ').textContent=d.q;const opts=document.getElementById('megaOpts');opts.innerHTML='';d.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='quiz-opt';b.textContent=o;b.onclick=()=>{if(i===d.a){megaScore++;toast('ശരി!');}else toast('തെറ്റ്');megaIdx++;nextMega();};opts.appendChild(b);});}
+
+// Init some on load
+initName();
+</script>
+</body>
+</html>
